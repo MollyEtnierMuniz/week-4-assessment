@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Back End Assessment</title>
+  </head>
+  <body class="container">
+
+    <button id="complimentButton">Get a compliment</button>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="main.js"></script>
+    
+    <button id="fortuneButton">Get a fortune</button>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="main.js"></script>
+    <br>
+    <h1> Help us fill our gratitude list!</h1>
+     <p> Studies show that focusing on personal gratitude enhances well-being. Here's your chance! <br>What are you grateful for?</br></p>
+      
+     <form>
+        <input id="entry" type="text" placeholder=" I'm grateful for..." maxlength="100" required="required"/>
+        <input type="submit" value="add that to the list!"/> 
+      </form>
+      <br>
+
+     <h2>Here's our gratitude list so far: </h2>
+<!-- this is a space where the entries will show up on the page, but I'm not sure I have it right so I stuck a chunk of text in there. -->
+    <section id="entries-container"></section> 
+"I'm grateful for my dog, even though she's old."
+
+    <h3>Does your entry look right to you? <br> Edit it below if needed.</h3>
+    <form>
+        <input id="updateGratitude" type="submit" value="Actually, my entry should be this instead:"/>
+        <input id="updateGratitudeBtn" type="text" placeholder="(Type update here)" maxlength="100"/>
+        
+      </form>
+      <br>
+      <button id="deleteGratitudeBtn">Please delete my entry.</button>
+
+  </body>
+</html>
