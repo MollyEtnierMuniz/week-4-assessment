@@ -2,39 +2,55 @@
 <html>
   <head>
     <title>Back End Assessment</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
   </head>
   <body class="container">
 
+
     <button id="complimentButton">Get a compliment</button>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="main.js"></script>
-    
     <button id="fortuneButton">Get a fortune</button>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="main.js"></script>
+    <button id="canDoButton">Get encouragment</button>
+    <button id="sunsetButton">See a pretty sunset</button>
+
     <br>
+
+    <!-- filling the gratitude list -->
+
     <h1> Help us fill our gratitude list!</h1>
      <p> Studies show that focusing on personal gratitude enhances well-being. Here's your chance! <br>What are you grateful for?</br></p>
       
-     <form>
+     <form id="entryForm">
         <input id="entry" type="text" placeholder=" I'm grateful for..." maxlength="100" required="required"/>
         <input type="submit" value="add that to the list!"/> 
       </form>
       <br>
 
      <h2>Here's our gratitude list so far: </h2>
-<!-- this is a space where the entries will show up on the page, but I'm not sure I have it right so I stuck a chunk of text in there. -->
-    <section id="entries-container"></section> 
-"I'm grateful for my dog, even though she's old."
 
-    <h3>Does your entry look right to you? <br> Edit it below if needed.</h3>
-    <form>
-        <input id="updateGratitude" type="submit" value="Actually, my entry should be this instead:"/>
-        <input id="updateGratitudeBtn" type="text" placeholder="(Type update here)" maxlength="100"/>
-        
-      </form>
+    <section id="entriesContainer"></section>
+
+
       <br>
       <button id="deleteGratitudeBtn">Please delete my entry.</button>
+     <br>
+     <!-- bonus content because this is my favorite inspirational video of all time -->
+     <div> 
+      <h3>
+        Sometimes the most moving inspiration comes from emulating highly-trained, disciplined successful athletes. 
+        <br>For your consideration: 
+      </h3>
 
+      <iframe width="550" height="300"
+      src="https://www.youtube.com/embed/eaIvk1cSyG8">
+      </iframe> 
+      
+    </div>  
+      <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+      <script src="main.js"></script>
   </body>
 </html>

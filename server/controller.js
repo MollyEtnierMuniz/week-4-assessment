@@ -1,6 +1,6 @@
 const entries = require('./db.json')
 let globalId = 1
-
+///buttons
 module.exports = {
 
     getCompliment: (req, res) => {
@@ -18,29 +18,39 @@ module.exports = {
       
         res.status(200).send(randomFortune);
     },
+
+    getCanDo: (req, res) => {
+        const canDos = ["The most effective way to do it, is to do it. — Amelia Earhart" , "Sometimes the best thing you can do is not think, not wonder, not imagine, not obsess. Just breathe and have faith that everything will work out for the best. — Unknown", "It is during our darkest moments that we must focus to see the light. — Aristotle Onassis", "Everyone has inside them a piece of good news. The good news is you need not know how great you can be! How much you can love! What you can accomplish! And what your potential is. — Anne Frank",  "Be gentle with yourself. You are doing the best you can! — Unknown"];
+      
+        let randomIndex = Math.floor(Math.random() * canDos.length);
+        let randomcanDo = canDos[randomIndex];
+      
+        res.status(200).send(randomcanDo);
+    },   
+    
+    getSunset: (req, res) => {
+        const sunsetPhotos = ["https://flic.kr/p/ciFGYh", "https://flic.kr/p/25aW4YD", "https://flic.kr/p/28dLo3t"];
+
+        let randomIndex = Math.floor(Math.random() * sunsetPhotos.length);
+        let randomsunsetPhoto = sunsetPhotos[randomIndex];
+      
+        res.status(200).send(randomsunsetPhoto);
+    }, 
+
     getGratitude: (req, res) => res.status(200).send(entries),
     
     deleteGratitude: (req, res) => {
-        let index = entries.findIndex(elem => elem.id === +req.params.id)
-        entries.splice(index, 1)
+        entries.splice(0, entries.length)
         res.status(200).send(entries)
     },
     createGratitude: (req, res) => {
-        let {Text} = req.body
-        let newEntry = {
+          let newEntry = {
             id: globalId,
-            Text
+            text:req.body.text
         }
-        entries.push(newEntry)
-        res.status(200).send(entries)
+    
+        res.status(200).send(newEntry)
         globalId++
     },
-    ///I think I have this part wrong. I want to replace the old text entry with the new text entry. 
-    updateGratitude: (req, res) => {
-        let { id } = req.params
-        let { entries } = req.body
-        let index = entries.findIndex(elem => +elem.id === +id)
-        { entries[index].newText = entries[index].text }
-            res.status(200).send(entries)
-    }
-}
+   
+   }

@@ -1,5 +1,6 @@
-const { createGratitude, updateGratitude } = require("../server/controller");
+const entryForm = document.getElementById("entryForm")
 
+///below this are the four buttons
 const complimentBtn = document.getElementById("complimentButton");
 const getCompliment = () => {
     axios.get("http://localhost:4000/api/compliment/")
@@ -21,25 +22,54 @@ const getFortune = () => {
 };
 fortuneBtn.addEventListener('click', getFortune);
 
-///I need to add handle "entry" text field
+const canDoBtn = document.getElementById("canDoButton")
+const getCanDo = () => {
+    axios.get("http://localhost:4000/api/canDo/")
+        .then(res => {
+            const data = res.data;
+            alert(data);
+    });
+};
+canDoBtn.addEventListener('click', getCanDo);
+
+const sunsetBtn = document.getElementById("sunsetButton");
+const getSunset = () => {
+    axios.get("http://localhost:4000/api/sunset/")
+        .then(res => {
+            const data = res.data;
+            alert(data);
+    });
+};
+sunsetBtn.addEventListener('click', getSunset)
+
+
+///filling the gratitude list
 const entry = document.getElementById("entry");
 
+const entriesContainer = document.getElementById("entriesContainer")
 
-const createGratitude: (req, res) => {
-    let {submit} = req.body
-    let entry = {
-        id: globalId,
-        Text 
-    }
-    entries.push(entry)
-    res.status(200).send(entries)
-    globalId++
+const createGratitude = (event) => {
+    event.preventDefault()
+    axios.post ("http://localhost:4000/api/gratitude",{text:entry.value})
+    .then (res => {
+        const newEntry = document.createElement('p')
+        newEntry.textContent = res.data.text
+        entriesContainer.appendChild(newEntry)
+        console.log(res.data)
+    } )
 }
+entryForm.addEventListener('submit', createGratitude)
 
-updateGratitudeBtn.addEventListener('click', updateGratitude);
 
-const deleteGratitude = document.getElementById("deleteGratitudeBtn");
-    entries.push(entry)
-    res.status(200).send(entries)
-    globalId--
+const deleteGratitudeBtn = document.getElementById ("deleteGratitudeBtn");
+
+const deleteGratitude =(event) => {
+axios.delete ("http://localhost:4000/api/gratitude")
+    .then (res => {
+        entriesContainer.innerHTML = ''
+    })
+event.preventDefault()
+console.log (event)
+}
+deleteGratitudeBtn.addEventListener('click', deleteGratitude)
 
